@@ -1,0 +1,18 @@
+form {
+    margin-top: 1em;
+}
+
+form input[placeholder = 'City'],
+form input[placeholder = 'Country']{
+    background-color: transparent !important;
+    color: black;
+    border: 0;
+    border-bottom:  2px solid rgb(147, 163, 154);
+    border-radius: 0;
+}
+
+form input:focus{
+    background-color: transparent;
+    box-shadow: none !important;
+}
+

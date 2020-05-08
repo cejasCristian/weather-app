@@ -1,25 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment, useState, useEffect } from 'react';
+import SearchBar from './components/SearchBar';
+import WeatherCard from './components/WeatherCard';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'weather-icons/css/weather-icons.css';
+
+const APIKEY = '5e2ef034ee4429608f79d03af9ea638b';
 
 function App() {
+
+  //state def
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [description, setDescription] = useState('');
+  const [weather, setWeather] = useState([]); //ver bien!!
+
+  useEffect(() => {
+    fetchData()
+
+  }, [])
+
+  const fetchData = async () => {
+    const data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${APIKEY}`)
+    const info = await data.json()
+    setWeather(info)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <SearchBar />
+      <div>
+        <WeatherCard 
+          city = {weather.name}
+          //country = {weather.sys.country}
+          //description = {weather.weather[0].description}
+        />
+      </div>
+    </>
   );
 }
 
