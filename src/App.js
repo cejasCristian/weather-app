@@ -10,11 +10,12 @@ const APIKEY = '5e2ef034ee4429608f79d03af9ea638b';
 function App() {
 
   //state def
-  const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
-  const [description, setDescription] = useState('');
-  const [weather, setWeather] = useState([]); //ver bien!!
+  const [city, setCity] = useState('');//Searchbar
+  const [country, setCountry] = useState('');//Searchbar
 
+  const [weather, setWeather] = useState([]); //API
+
+  //API call
   useEffect(() => {
     fetchData()
 
@@ -28,12 +29,15 @@ function App() {
 
   return (
     <>
-        <SearchBar />
+        <SearchBar
+          city = {city}
+          setCity = {setCity}
+          country = {country}
+          setCountry = {setCountry}
+        />
       <div>
         <WeatherCard 
-          city = {weather.name}
-          //country = {weather.sys.country}
-          //description = {weather.weather[0].description}
+          data = {weather}
         />
       </div>
     </>

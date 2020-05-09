@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react'
 import './WeatherCardStyle.css';
 
-const WeatherCard = (props) => {
-
-    const {city, setCity, country, setCountry, description, setDescription} = props
+const WeatherCard = ({data}) => {
 
     return (
         <div className = 'container'>
             <div className = 'row'>
                 <div className = 'col-4 weatherCard offset-md-4'>
                     <div className = 'head'>
-                        <h1 className = 'text-center display-4'>{city}, {country}</h1>
+                        <h1 className = 'text-center display-4'>{data.name}, country</h1>
                         <h6 className = 'text-center display-8'>Wednesday,6</h6>
                         <div id = '' className = 'text-center'> 
                             <i id = 'icon' className = 'wi wi-day-rain-mix'></i>
-                            <p id = 'desc'>{description}</p>
+                            <p id = 'desc'>descripcion</p>
                             <h2 className = 'display-4'>25 °C</h2>
                             <h4 className = 'display-6'>MAX MIN</h4>
                         </div>
@@ -31,7 +29,7 @@ const WeatherCard = (props) => {
                             </div>
                             <div className = 'windspeed col-4 text-center'>
                                 <i className = 'wi wi-strong-wind'></i>
-                                <span> Wspeed</span>
+                                <span>wspeed</span>
                             </div>
                         </div>
                     </div>
