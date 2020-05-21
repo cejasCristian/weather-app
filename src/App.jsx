@@ -15,7 +15,6 @@ function App() {
   const [loading, setLoading] = useState (false);
 
   const handleInfoFromSearchbar = (info) => {
-    console.log(info);
     fetchData(info[0],info[1]);
   };
 
