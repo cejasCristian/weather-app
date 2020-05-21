@@ -15,7 +15,9 @@ function App() {
   const [loading, setLoading] = useState (false);
 
   const handleInfoFromSearchbar = (info) => {
-    fetchData(info[0],info[1]);
+    return info[0] === '' || info[1]===''
+      ? null
+      :fetchData(info[0],info[1]);
   };
 
   const fetchData = async (newCity = '', newCountry = '') => {
