@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 //  react/prop-types
 const WeatherCard = ({ main, name, sys, wind, weather }) => {
 
-  let id = weather[0].id;
+  let weatherStatus = weather[0].main;
 
-  const weatherIcons = (id) => {
+  const weatherIcons = (weatherStatus) => {
   
     const weatherIcon = {
         Thunderstorm: "wi-thunderstorm",
@@ -18,41 +18,19 @@ const WeatherCard = ({ main, name, sys, wind, weather }) => {
         Atmosphere: "wi-fog",
         Clear: "wi-day-sunny",
         Clouds: "wi-day-fog"
-    }
+    };
 
     let icon = '';
   
-    switch(id){
-        case id >= 200 && id < 232:
-            icon = weatherIcon.Thunderstorm;
-            break;
-        case id >= 300 && id < 321:
-            icon = weatherIcon.Drizzle;
-            break;
-        case id >= 500 && id < 521:
-            icon = weatherIcon.Rain;
-            break;
-        case id >= 600 && id < 622:
-            icon = weatherIcon.Snow;
-            break;
-        case id >= 701 && id < 781:
-            icon = weatherIcon.Atmosphere;
-            break;
-        case id === 800:
-            icon = weatherIcon.Clear;
-            break;
-        case id >= 801 && id < 804:
-            icon = weatherIcon.Clouds;
-            break;
-        default:
-            icon = weatherIcon.Clear;
+    if(Object.keys(weatherIcon).indexOf(weatherStatus) > -1){
+      icon = weatherIcon[weatherStatus];
     }
 
     return `wi ${icon} display-1`;
 
 }
 
-  const newIcon = weatherIcons(id);
+  const newIcon = weatherIcons(weatherStatus);
 
   //Date
   const dateBuilder = (d) => {

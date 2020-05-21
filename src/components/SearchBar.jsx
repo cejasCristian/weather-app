@@ -10,62 +10,69 @@ const SearchBar = ({getInfo, setLoading}) => {
 
     const [error, setError] = useState(false);
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault();
         getInfo([city, country])
+
 
         if (city === '' || country === ''){
             setError(true);
             return;
-        }
+        } else {
             setError(false);
+        
+            //Enable spinner
+            setLoading(true);
 
-        //Enable spinner
-        setLoading(true);
+            setTimeout( () => {
+                setCity(city);
+                setCountry(country);
+                //Disable spinner
+                setLoading(false);
+            }, 3000);
+        }
 
-        setTimeout( () => {
-            setCity(city);
-            setCountry(country);
-            //Disable spinner
-            setLoading(false);
-        }, 3000);
-    }
+        setCountry('');
+        setCity('');
+        
+    };
 
     
 
 
     return (
         <>
-            <div className = 'container'>
-                    <div className = 'row'>
-                        <div className = 'col-md-3 py-1 offset-md-2 '>
-                            <input
-                                className = 'form-control'
-                                name = 'city'
-                                type = 'text'
-                                placeholder = 'City'
-                                onChange = { e => setCity(e.target.value)}
-                            />
+                <div className = 'container'>
+                        <div className = 'row'>
+                            <div className = 'col-md-3 py-1 offset-md-2 '>
+                                <input
+                                    className = 'form-control'
+                                    name = 'city'
+                                    type = 'text'
+                                    placeholder = 'City'
+                                    onChange = { e => setCity(e.target.value)}
+                                />
+                            </div>
+                            <div className = 'col-md-3 py-1'>
+                                <input
+                                    className = 'form-control'
+                                    name = 'country'
+                                    type = 'text'
+                                    placeholder = 'Country'
+                                    onChange = { e => setCountry(e.target.value)}
+                                />
+                            </div>
+                            <div className = 'col-md-3 mt-md-0 py-1 text-md-left text-center'>
+                                <button 
+                                    type ='submit'
+                                    className ='btn btn-outline-light text-center'
+                                    onClick = {handleClick}
+                                >Get Weather
+                                </button>
+                            </div>
                         </div>
-                        <div className = 'col-md-3 py-1'>
-                            <input
-                                className = 'form-control'
-                                name = 'country'
-                                type = 'text'
-                                placeholder = 'Country'
-                                onChange = { e => setCountry(e.target.value)}
-                            />
-                        </div>
-                        <div className = 'col-md-3 mt-md-0 py-1 text-md-left text-center'>
-                            <button 
-                                type ='submit'
-                                className ='btn btn-outline-light text-center'
-                                onClick = {handleClick}
-                            >Get Weather
-                            </button>
-                        </div>
-                    </div>
-            </div>
-
+                </div>
+            
             {(error) ? <p className = "error mt-2">All fields are required</p> : null}
             
         </>
