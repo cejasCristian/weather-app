@@ -1,7 +1,7 @@
 .weatherCard {
-    border: 1px solid black;
-    margin-top: 3rem;
-    background-color: rgba(0, 0, blue, 0.5);
+    border: 3px solid white;
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
 }
 
@@ -14,4 +14,9 @@
 
 p {
     padding-top: 2rem;
+}
+
+.container {
+    margin-top:1rem;
+    color: white;
 }

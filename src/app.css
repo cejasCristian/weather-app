@@ -1,0 +1,14 @@
+body {
+    background-image: url(./back.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: brightness(0.9);
+}
+
+.position {
+    text-align: center;
+    padding: 2rem;
+    margin: 0 auto;
+}
