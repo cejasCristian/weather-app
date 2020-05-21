@@ -22,7 +22,7 @@ function App() {
 
   const fetchData = async (newCity = '', newCountry = '') => {
     const data = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${newCity},${newCountry}&appid=${APIKEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${newCity},${newCountry}&appid=${APIKEY}&units=metric`
     );
     const info = await data.json();
     setWeathers(info);
